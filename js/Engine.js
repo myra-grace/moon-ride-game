@@ -50,6 +50,7 @@ class Engine {
         // We check if the player is dead. If he is, we alert the user
         // and return from the method (Why is the return statement important?)
         if (this.isPlayerDead()) {
+            console.log('OUT');
             window.alert("Game over");
             return;
         }
@@ -59,6 +60,31 @@ class Engine {
     // This method is not implemented correctly, which is why
     // the burger never dies. In your exercises you will fix this method.
     isPlayerDead = () => {
-        return false;
+        for (let enemy of this.enemies) {
+            return this.isOverlapping(enemy, this.player);
+        }
+    }
+    isOverlapping = (enemy, player) => {
+        const enemySpace = enemy.domElement.getBoundingClientRect();
+        const playerSpace = player.domElement.getBoundingClientRect();
+        const yAxisCheck = ((playerSpace.top + 15 > enemySpace.top &&
+                            playerSpace.top + 15< enemySpace.bottom) ||
+                            (playerSpace.bottom -15 > enemySpace.top &&
+                            playerSpace.bottom -15 < enemySpace.bottom)) ||
+                            //ENEMY'S PERSPECTIVE
+                            ((enemySpace.top > playerSpace.top + 15 &&
+                            enemySpace.top < playerSpace.bottom - 15) ||
+                            (enemySpace.bottom > playerSpace.top + 15 &&
+                            enemySpace.bottom < playerSpace.bottom - 15));
+        const xAxisCheck = ((playerSpace.left +15 < enemySpace.right &&
+                            playerSpace.left +15 > enemySpace.left) ||
+                            (playerSpace.right -15 < enemySpace.right &&
+                            playerSpace.right -15 > enemySpace.left)) ||
+                            //ENEMY'S PERSPECTIVE
+                            ((enemySpace.left < playerSpace.right - 15 &&
+                            enemySpace.left > playerSpace.left + 15) ||
+                            (enemySpace.right < playerSpace.right - 15 &&
+                            enemySpace.right > playerSpace.left + 15));
+        return yAxisCheck && xAxisCheck;
     }
 }
