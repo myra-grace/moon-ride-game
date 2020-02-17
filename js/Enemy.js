@@ -32,12 +32,15 @@ class Enemy {
         // is why we create a property that refers to it.
         this.domElement = document.createElement('img');
         // We give it a src attribute to specify which image to display.
-        this.domElement.src = './images/enemy.png';
+        this.domElement.src = 'images/meteor_sprite.gif';
+        this.domElement.style.objectFit = 'cover';
+        this.domElement.style.width = `${ENEMY_WIDTH}px`;
+        this.domElement.style.height = `${ENEMY_HEIGHT}px`;
         // We modify the CSS style of the DOM node.
         this.domElement.style.position = 'absolute';
         this.domElement.style.left = `${this.x}px`;
         this.domElement.style.top = `${this.y}px`;
-        this.domElement.style.zIndex = 5;
+        this.domElement.style.zIndex = '2';
         // Show that the user can actually see the img DOM node, we append it to the root DOM node.
         theRoot.appendChild(this.domElement);
         this.speed = Math.random() / 2 + 0.25;

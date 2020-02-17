@@ -11,7 +11,7 @@ class Text {
         div.style.top = yPos;
         div.style.color = 'white';
         div.style.font = 'bold 30px Impact';
-        div.style.zIndex = 2000;
+        div.style.zIndex = 3;
         root.appendChild(div);
         this.domElement = div;
     }
