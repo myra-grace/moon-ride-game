@@ -6,6 +6,7 @@ const gameEngine = new Engine(document.getElementById("app"));
 // will be called every time the user presses a key. The argument of the function call will be an object.
 // The object will contain information about the key press, such as which key was pressed. 
 const keydownHandler = event => {
+    if (!gameEngine.isRunning) return;
     // event.code contains a string. The string represents which key was press. If the
     // key is left, then we call the moveLeft method of gameEngine.player (where is this method defined?)
     if (event.code === "ArrowLeft") {
@@ -17,7 +18,27 @@ const keydownHandler = event => {
         gameEngine.player.moveRight();
     }
 }
+
+startGame = () => {
+    gameEngine.gameLoop();
+    gameEngine.isRunning = true;
+    document.querySelector('.start').removeEventListener('click', startGame)
+}
+
+const keyUpHandler = event => {
+    if (!gameEngine.isRunning) return;
+
+    if (event.code === "ArrowLeft" || event.code === "ArrowRight") {
+        gameEngine.player.straightenCar();
+    }
+}
+
 // We add an event listener to document. document the ancestor of all DOM nodes in the DOM.
 document.addEventListener("keydown", keydownHandler);
+document.addEventListener("keyup", keyUpHandler);
 // We call the gameLoop method to start the game
-gameEngine.gameLoop();
+
+let moonRide = document.getElementById('moon-ride');
+moonRide.play();
+
+document.querySelector('.start').addEventListener('click', startGame);

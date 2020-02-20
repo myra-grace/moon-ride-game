@@ -1,14 +1,31 @@
 <html>
 <head>    
-    <title>Nyan Kat</title> 
+    <title>Moon Ride Game</title> 
+    <link href="js/styles.css" rel="stylesheet" type="text/css">
 </head> 
-<body>    
-    <div id="app"></div> 
+<body>
+    <audio loop id="moon-ride" src="images/Los Retros - Moon Ride.mp3"></audio>
+    <audio loop id = "car-noise" src="images/car_noise.mp3"></audio>
+    <audio id="hit-noise" src="images/hit_noise.mp3"></audio>
+    <audio id = "crash" src="images/crash_noise.mp3"></audio>
+    <audio id="car-reset-noise" src="images/car_noise_RESET.mp3"></audio>
+    <p class="music">🎵Los Retros - Moon Ride🎵</p>
+    <div class="game-over-container">
+        <h1 class="game-over">Game Over</h1>
+        <button class="reset">Restart</button>
+    </div>    
+    <div id="app">
+        <div class="menu">
+            <p class="instructions">Use the arrow keys to dodge the meteors.</p>
+            <button class="start">Start</button>
+        </div>
+        <p class="life-bar"></p>
+    </div> 
     <script src="js/data.js"></script> 
     <script src="js/Enemy.js"></script> 
     <script src="js/engine-utilities.js"></script> 
     <script src="js/Engine.js"></script> 
     <script src="js/Player.js"></script> 
-    <script src="js/main.js"></script> 
+    <script src="js/main.js"></script>
 </body> 
 </html> 

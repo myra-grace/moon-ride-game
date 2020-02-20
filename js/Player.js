@@ -10,15 +10,19 @@ class Player {
         this.x = 2 * PLAYER_WIDTH;
         // The y position never changes, so we don't need to store it in a property. It represents the y position of the top of the
         // hamburger. The y position is the distance from the top margin of the browsing area.
-        const y = GAME_HEIGHT - PLAYER_HEIGHT - 10;
+        this.y = GAME_HEIGHT - PLAYER_HEIGHT - 10;
         // We create a DOM node. We will be updating the DOM node every time we move the player, so we store a reference to the
         // DOM node in a property.
         this.domElement = document.createElement("img");
-        this.domElement.src = 'images/player.png';
+        this.domElement.src = 'images/car_STRAIGHT.jpeg';
+        this.domElement.style.objectFit = 'cover';
+        this.domElement.style.width = `${PLAYER_WIDTH}px`;
+        this.domElement.style.height = `${PLAYER_HEIGHT}px`;
         this.domElement.style.position = 'absolute';
         this.domElement.style.left = `${this.x}px`;
-        this.domElement.style.top =` ${y}px`;
-        this.domElement.style.zIndex = '10';
+        this.domElement.style.top =` ${this.y}px`;
+        this.domElement.style.zIndex = '1';
+        this.domElement.style.transition = '0.5s';
         root.appendChild(this.domElement);
     }
     // This method will be called when the user presses the left key. See in Engine.js
@@ -27,6 +31,7 @@ class Player {
         if (this.x > 0) {
             this.x = this.x - PLAYER_WIDTH;
         }
+        this.domElement.src = 'images/car_LEFT.jpeg';
         this.domElement.style.left = `${this.x}px`;
     }
     // We do the same thing for the right key. See Engine.js to see when this happens.
@@ -34,6 +39,29 @@ class Player {
         if (this.x + PLAYER_WIDTH < GAME_WIDTH) {
             this.x = this.x + PLAYER_WIDTH;
         }
+        this.domElement.src = 'images/car_RIGHT.jpeg';
         this.domElement.style.left = `${this.x}px`;
     }
+
+    straightenCar() {
+        this.domElement.src = 'images/car_STRAIGHT.jpeg';
+    }
+
+    resetCar() {
+        this.domElement.src = 'images/car_RESET.gif';
+        this.domElement.style.width = `${PLAYER_WIDTH*2}px`;
+        this.domElement.style.height = `${PLAYER_HEIGHT}px`;
+
+        setTimeout(() => {
+            this.domElement.style.width = `${PLAYER_WIDTH}px`;
+            this.domElement.style.height = `${PLAYER_HEIGHT}px`;
+        }, 1000);
+    }
+
+    carCrash () {
+        this.domElement.src = 'images/car_crashed.gif';
+        this.domElement.style.width = `${PLAYER_WIDTH * 2}px`;
+        this.domElement.style.height = `${PLAYER_HEIGHT}px`;
+    }
+
 }
