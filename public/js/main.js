@@ -38,6 +38,7 @@ document.addEventListener("keydown", keydownHandler);
 document.addEventListener("keyup", keyUpHandler);
 // We call the gameLoop method to start the game
 
+//MOON RIDE LOS RETROS
 let moonRide = document.getElementById('moon-ride');
 moonRide.play();
 
