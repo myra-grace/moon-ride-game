@@ -11,10 +11,10 @@
 
 # Screenshots
 ## Menu
-<p align="center"><img src="./images/74677888-827ebc00-5187-11ea-9a97-a1ffa7c3d146.png"></p>
+<p align="center"><img src="./public/images/74677888-827ebc00-5187-11ea-9a97-a1ffa7c3d146.png"></p>
 
 ## Gameplay & Car Movement
-<p align="center"><img src="./images/74677946-a04c2100-5187-11ea-96fb-853dcbacb6a7.png"></p>
+<p align="center"><img src="./public/images/74677946-a04c2100-5187-11ea-96fb-853dcbacb6a7.png"></p>
 
 ## Gameover & Restart Animation
-<p align="center"><img src="./images/74677821-61b66680-5187-11ea-99e4-a47b9e8e0f22.png"></p>
+<p align="center"><img src="./public/images/74677821-61b66680-5187-11ea-99e4-a47b9e8e0f22.png"></p>
