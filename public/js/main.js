@@ -1,20 +1,14 @@
-// We create an instance of the Engine class. Looking at our index.html,
-// we see that it has a div with an id of \`"app"\`  
+
 const gameEngine = new Engine(document.getElementById("app"));
-// keydownHandler is a variable that refers to a function. The function has one parameter
-// (does the parameter name matter?) which is called event. As we will see below, this function
-// will be called every time the user presses a key. The argument of the function call will be an object.
-// The object will contain information about the key press, such as which key was pressed. 
+
 const keydownHandler = event => {
     if (!gameEngine.isRunning) return;
-    // event.code contains a string. The string represents which key was press. If the
-    // key is left, then we call the moveLeft method of gameEngine.player (where is this method defined?)
-    if (event.code === "ArrowLeft") {
+
+    if (event.code === "ArrowLeft" || event.code === "KeyA") {
         gameEngine.player.moveLeft();
     }
-    // If \`event.code\` is the string that represents a right arrow keypress,
-    // then move our hamburger to the right
-    if (event.code === "ArrowRight") {
+
+    if (event.code === "ArrowRight" || event.code === "KeyD") {
         gameEngine.player.moveRight();
     }
 }
@@ -23,23 +17,33 @@ startGame = () => {
     gameEngine.gameLoop();
     gameEngine.isRunning = true;
     document.querySelector('.start').removeEventListener('click', startGame)
+    // document.removeEventListener('keydown', () => {
+    //     if (event.code === "Enter" || event.code === "Space") {
+    //         event.preventDefault();
+    //         startGame();
+    //     }
+    // });
 }
 
 const keyUpHandler = event => {
     if (!gameEngine.isRunning) return;
 
-    if (event.code === "ArrowLeft" || event.code === "ArrowRight") {
+    if (event.code === "ArrowLeft" || event.code === "ArrowRight" || event.code === "KeyA" || event.code === "KeyD") {
         gameEngine.player.straightenCar();
     }
 }
 
-// We add an event listener to document. document the ancestor of all DOM nodes in the DOM.
 document.addEventListener("keydown", keydownHandler);
 document.addEventListener("keyup", keyUpHandler);
-// We call the gameLoop method to start the game
 
 //MOON RIDE LOS RETROS
 // let moonRide = document.getElementById('moon-ride');
 // moonRide.play();
 
 document.querySelector('.start').addEventListener('click', startGame);
+// document.addEventListener('keydown', () => {
+//     if (event.code === "Enter" || event.code === "Space") {
+//         event.preventDefault();
+//         startGame();
+//     }
+// })
