@@ -49,8 +49,7 @@ class Engine {
             reset.style.display = 'block';
             let gameOver = document.querySelector('.game-over');
             gameOver.style.display = 'block';
-            let finalScore = document.querySelector('.score').innerHTML = `SCORE: ${score}`;
-            // finalScore.style.display = 'block';
+            document.querySelector('.score').innerHTML = `SCORE: ${score}`;
 
             this.isRunning= false;
 

@@ -36,6 +36,24 @@ const keyUpHandler = event => {
 document.addEventListener("keydown", keydownHandler);
 document.addEventListener("keyup", keyUpHandler);
 
+//TOUCH FUNCTIONS
+const moveLeftSwipe = () => {
+    if (!gameEngine.isRunning) return;
+    gameEngine.player.moveLeft();
+    setTimeout(() => {
+        gameEngine.player.straightenCar();
+    }, 200);
+}
+const moveRigthSwipe = () => {
+    if (!gameEngine.isRunning) return;
+    gameEngine.player.moveRight();
+    setTimeout(() => {
+        gameEngine.player.straightenCar();
+    }, 200);
+}
+document.addEventListener('swiped-left', moveLeftSwipe);
+document.addEventListener('swiped-right', moveRigthSwipe)
+
 //MOON RIDE LOS RETROS
 // let moonRide = document.getElementById('moon-ride');
 // moonRide.play();
